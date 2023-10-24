@@ -5,39 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFClientForNotesWebAPI"
         mc:Ignorable="d"
-        Title="WPFClient" Height="450" Width="1800">
-    <Grid >
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0">
-            <Label Content="Title" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <Label Content="Details" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+        Title="WPFClient" Height="1000" Width="800">
+    <Grid Margin="0,0,0,0" >
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="176,10,0,0" Width="330" Height="400">
+            <DockPanel Width="280" HorizontalAlignment="Right">
+                <Button x:Name="Register" Content="Register" Click="Register_Click" Width="120" Height="62" DockPanel.Dock="Right"/>
+                <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Click="LoginButton_Click" Width="121" Height="62" DockPanel.Dock="Left"/>
+            </DockPanel>
+            <WebBrowser x:Name="webBrowser" Height="300" Width="400" HorizontalAlignment="Left" />
         </StackPanel>
 
-        <TextBox x:Name="TextNoteId" HorizontalAlignment="Left"  Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="100" Margin="11,546,0,0">
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,0">
+                <Label Content="Title" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                <Label Content="Details" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+            </StackPanel>
 
-        <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50" Margin="50,10,0,0">
-            <TextBox x:Name="TextNoteTitle" HorizontalAlignment="Left"  Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="TextNoteDetails" HorizontalAlignment="Left"  Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,10,0,0"/>
+            <StackPanel  HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="100" Margin="50,-50,0,0">
+                <TextBox x:Name="TextNoteTitle" HorizontalAlignment="Left"  Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+                <TextBox x:Name="TextNoteDetails" HorizontalAlignment="Left"  Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="0,10,0,0"/>
+                <Button  x:Name="SaveNote" Content="Save Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="0,10,0,0" Click="SaveNote_Click"/>
+            </StackPanel>
         </StackPanel>
 
-        <Button x:Name="SaveNote" Content="Save Note" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,65,0,0" Click="SaveNote_Click"/>
-
-        <DataGrid x:Name="DataGridNote" Width="500" Height="300" Margin="275,52,25,82" HorizontalAlignment="Left"
-                  xmlns:my ="http://schemas.microsoft.com/expression/blend/2008"
-                  CanUserAddRows="True"
-                  ItemsSource="{Binding}"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="NoteId" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title}"/>
-                <DataGridTextColumn Header="Details" Binding="{Binding Path=Details}"/>
-            </DataGrid.Columns>
-
-        </DataGrid>
-        <Button x:Name="LoadNote" Content="Load Note" HorizontalAlignment="Left" Margin="383,21,0,0" VerticalAlignment="Top" Width="288" Click="LoadNote_Click"/>
-        <Label x:Name="LabelMessage" Content="" HorizontalAlignment="Left" Margin="77,172,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Right" VerticalAlignment="Top" Click="LoginButton_Click" Width="121" Height="62" Margin="0,3,350,0"/>
-        <Button x:Name="Register" Content="Register" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Register_Click" Width="121" Height="62" Margin="0,3,486,0"/>
-
-        <WebBrowser x:Name="webBrowser" Height="300" Width="400" HorizontalAlignment="Right" Margin="0,74,300,60"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="500" Height="349" Margin="256,519,0,0">
+            <Button x:Name="LoadNote" Content="Load Note" Width="288" Click="LoadNote_Click"/>
+            <DataGrid 
+                            xmlns:my ="http://schemas.microsoft.com/expression/blend/2008"
+                            x:Name="DataGridNote" Width="500" Height="300"
+                            CanUserAddRows="True"
+                            ItemsSource="{Binding}"
+                            AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="NoteId" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
+                    <DataGridTextColumn Header="Details" Binding="{Binding Details}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>
